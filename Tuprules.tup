@@ -1,0 +1,5 @@
+CXXFLAGS += @(CXXFLAGS)
+CXXFLAGS += -Wall -O3
+
+!cxx = |> @(CXX) $(CXXFLAGS) -c %f -o %o |> %B.o
+!link = |> @(CXX) %f -o %o |>
