@@ -1,5 +1,6 @@
-CXXFLAGS += @(CXXFLAGS)
-CXXFLAGS += -Wall -O3
+CPPFLAGS += @(CPPFLAGS)
+CXXFLAGS += @(CXXFLAGS) -Wall -Wextra -O3
+LDFLAGS  += @(LDFLAGS)
 
-!cxx = |> @(CXX) $(CXXFLAGS) -c %f -o %o |> %B.o
-!link = |> @(CXX) %f -o %o |>
+!cxx = |> @(CXX) $(CPPFLAGS) $(CXXFLAGS) -c %f -o %o |> %B.o
+!link = |> @(CXX) $(LDFLAGS) %f -o %o |>
