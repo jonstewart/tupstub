@@ -23,16 +23,13 @@ AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([src/main.cpp])
 AC_CONFIG_HEADERS([config.h])
 
-AM_INIT_AUTOMAKE([foreign subdir-objects])
-LT_INIT
-
+AM_INIT_AUTOMAKE([foreign])
 
 #
 # common
 #
 AC_PROG_CC
 AC_PROG_CXX
-AM_PROG_CC_C_O
 
 AC_LANG([C])
 AX_APPEND_COMPILE_FLAGS([-g -std=c1x -W -Wall -Wextra -pedantic -pipe -O3], [DP_CFLAGS])
@@ -250,5 +247,19 @@ AC_MSG_NOTICE([CXXFLAGS: $CXXFLAGS])
 AC_MSG_NOTICE([LIBS:     $LIBS])
 AC_MSG_NOTICE([LDFLAGS:  $LDFLAGS])
 
-AC_CONFIG_FILES([Makefile])
+#
+# Dump recursively expanded output variables to tup.config.in
+#
+(
+  # prefix and exec_prefix must be defaulted when equal to NONE
+  test "x$prefix" = xNONE && prefix="$ac_default_prefix"
+  test "x$exec_prefix" = xNONE && exec_prefix="${prefix}"
+
+  for var in $ac_subst_vars; do
+    eval val=\$$var
+    echo "${var}='${val}'"
+  done | ./expand.py >tup.config.in
+)
+
+AC_CONFIG_FILES([Makefile tup.config])
 AC_OUTPUT
