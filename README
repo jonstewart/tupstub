@@ -1,4 +1,4 @@
-Dump the stub files into a git repo:
+Dump the stub files somewhere:
 
-  git ls-files`; do install -D $i /path/to/repo/$i ; done
+  cp -p --parents `git ls-files` /path/to/dst
 
