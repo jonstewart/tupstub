@@ -33,5 +33,5 @@ for line in sys.stdin:
 
 # dump it
 for (var, val) in sorted(v.items()):
-  print('CONFIG_{}="{}"'.format(var, ''.join(flatten(val)))) 
+  print('CONFIG_{}="{}"'.format(var, ''.join(flatten(val))))
 
