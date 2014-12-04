@@ -1,0 +1,4 @@
+Dump the stub files into a git repo:
+
+  git ls-files`; do install -D $i /path/to/repo/$i ; done
+
