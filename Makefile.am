@@ -1,7 +1,7 @@
-all:
+all-local:
 	tup upd
 
-clean:
+clean-local:
 	rm -f src/main src/*.o
 
 .PHONY: all clean
