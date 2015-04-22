@@ -56,15 +56,6 @@ esac
 # pkg-config doesn't look in /usr/local/lib on some systems
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
-
-
-
-
-###########################################################################
-#                                                                         #
-#                              Dependencies                               #
-#                                                                         #
-###########################################################################
 #
 # Boost headers
 #
@@ -140,7 +131,7 @@ fi
 # LG_CPPFLAGS="$LG_CFLAGS"
 # LG_CFLAGS=""
 
-# AC_SUBST([LG_CPPFLAGS])
+AC_SUBST([LG_CPPFLAGS])
 
 #
 # tests
@@ -179,12 +170,6 @@ if test "x$scope_ok" != "xyes"; then
   fi
   AC_MSG_WARN([])
 fi
-
-###########################################################################
-
-
-
-
 
 #
 # Threading
@@ -252,7 +237,7 @@ AC_SUBST([CCLD])
 # TODO: libtre has a nice display we can steal
 AC_MSG_NOTICE([BOOST_CPPFLAGS: $BOOST_CPPFLAGS])
 AC_MSG_NOTICE([BOOST_CXXFLAGS: $BOOST_CXXFLAGS])
-# AC_MSG_NOTICE([BOTAN_CFLAGS:   $BOTAN_CFLAGS])
+AC_MSG_NOTICE([BOTAN_CFLAGS:   $BOTAN_CFLAGS])
 
 AC_MSG_NOTICE([CC:       $CC])
 AC_MSG_NOTICE([CXX:      $CXX])
@@ -273,8 +258,8 @@ AC_MSG_NOTICE([LDFLAGS:  $LDFLAGS])
   for var in $ac_subst_vars; do
     eval val=\$$var
     echo "${var}='${val}'"
-  done | ./expand.py > build/tup.config.in
+  done | ./expand.py >tup.config.in
 )
 
-AC_CONFIG_FILES([Makefile build/tup.config])
+AC_CONFIG_FILES([Makefile tup.config])
 AC_OUTPUT
