@@ -3,7 +3,7 @@
 AC_PREREQ([2.64])
 # TODO: required versions for automake, libtool?
 
-AC_INIT([dispatcher], [0.0], [BUG-REPORT-ADDRESS])
+AC_INIT([tupstub], [0.0], [BUG-REPORT-ADDRESS])
 
 # Set the default C and C++ compilation flags to nothing.
 # Do this immediately after AC_INIT, as other macros might invoke
@@ -258,8 +258,8 @@ AC_MSG_NOTICE([LDFLAGS:  $LDFLAGS])
   for var in $ac_subst_vars; do
     eval val=\$$var
     echo "${var}='${val}'"
-  done | ./expand.py >tup.config.in
+  done | ./expand.py >build/tup.config.in
 )
 
-AC_CONFIG_FILES([Makefile tup.config])
+AC_CONFIG_FILES([Makefile build/tup.config])
 AC_OUTPUT
